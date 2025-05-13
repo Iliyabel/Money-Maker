@@ -71,6 +71,7 @@ nav a:hover {
 
 .money-clicker {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 60%;
@@ -78,10 +79,28 @@ nav a:hover {
     border-radius: 10px;
 }
 
+.money-clicker div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.money-clicker-header {
+    background-color: #f0f0f0;
+    color: #333;
+    flex-direction: column;
+}
+
+.money-clicker-header h2{
+    margin-bottom: 0;
+}
+
 .shop {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     background-color: lightblue;
     padding: 20px;
     width: 40%;
@@ -124,4 +143,5 @@ nav a:hover {
     justify-content: space-between;
     font-size: large;
     cursor: pointer;
+    padding-left: 15px;
 }

@@ -25,29 +25,34 @@
         <div class="container">
             <div class="money-clicker">
                 <div class="money-clicker-header">
-                    <h2> dollars</h2>
-                    <p>Click to earn money!</p>
+                    <p id="money-total">0</p>
+                    <p>dollars</h2>
+                    <p>dollars per second: </p>
                 </div>
-                <h2>Money clicking item</h2>
+                <div>
+                    <button onclick="moneyMint()">Mint Money</button>
+                </div>
             </div>
+
             <div class="shop">
                 <div>
                     <h2 class="shop-header">Shop</h2>
                 </div>
                 <div class="shop-upgrades">
                     <p>Upgrades</p>
-                    <button>Buy Pen Upgrade</button>
+                    <button id="pen-upgrade-1" onclick="penUpgrade1()">Buy Pen Upgrade</button>
                     <button>Buy Printer Upgrade</button>
-                    <button>Buy Pen 2 Upgrade</button>
+                    <button id="pen-upgrade-2" onclick="penUpgrade2()">Buy Pen 2 Upgrade</button>
                     <button>Buy Printer 2 Upgrade</button>
                 </div>
+
                 <div class="shop-assists">
                     <p>Assists</p>
-                    <button>Buy Pen</button>
-                    <button>Buy Print and Press</button>
-                    <button>Buy Printer</button>
-                    <button>Buy Giant Printer</button>
-                    <button>Buy Money Tree</button>
+                    <button>Pen</button>
+                    <button>Print and Press</button>
+                    <button>Printer</button>
+                    <button>Money Tree</button>
+                    <button>Farm</button>
                 </div>
             </div>
 
