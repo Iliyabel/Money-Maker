@@ -4,6 +4,8 @@ header {
     color: #333;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 .header-container   {
@@ -11,6 +13,37 @@ header {
     flex-direction: horizontal;
     height: 15hv;
     border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: horizontal;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: horizontal;
+    align-items: center;
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    list-style-type: none;
+}
+
+nav a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    margin: 0 15px;
+}
+nav a:hover {
+    text-decoration: underline;
 }
 
 .container {
