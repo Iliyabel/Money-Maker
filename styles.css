@@ -81,9 +81,47 @@ nav a:hover {
 .shop {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     background-color: lightblue;
     padding: 20px;
     width: 40%;
     border-radius: 10px;
+}
+
+.shop-upgrades {
+    justify-content: space-between;
+}
+
+.shop-upgrades button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    margin: auto;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; 
+    justify-content: space-between;
+}
+
+.shop-assists {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.shop-assists button {
+    display: flex;
+    flex-direction: horizontal;
+    align-items: center;
+    background-color: lightblue;
+    width: 100%;
+    height: 60px;
+    border-radius: 10px;
+    justify-content: space-between;
+    font-size: large;
+    cursor: pointer;
 }
