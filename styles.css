@@ -100,13 +100,14 @@ nav a:hover {
 
 #button-clicker {
     border: none;
-    background: url(dollar.png);
-    width: 612px;
-    height: 612px;
+    background: url(dollar2.png);
+    width: 300px;
+    height: 300px;
 }
 
 #button-clicker:hover {
     cursor: pointer;
+    filter: drop-shadow(5px 5px 5px #000);
 }
 
 .shop {
@@ -155,4 +156,12 @@ nav a:hover {
     font-size: large;
     cursor: pointer;
     padding-left: 15px;
+}
+
+.shop .not_bought {
+    filter: brightness(50%);
+}
+
+.shop .bought {
+    cursor: not-allowed;
 }

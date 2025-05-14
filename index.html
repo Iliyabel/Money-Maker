@@ -24,11 +24,13 @@
 
         <div class="container">
             <div class="money-clicker">
+
                 <div class="money-clicker-header">
-                    <p id="money-total">0</p>
+                    <p id="money-total">0.0</p>
                     <p>dollars</h2>
                     <p>dollars per second: </p>
                 </div>
+
                 <div>
                     <button id="button-clicker" onclick="moneyMint()"></button>
                 </div>
@@ -40,19 +42,19 @@
                 </div>
                 <div class="shop-upgrades">
                     <p>Upgrades</p>
-                    <button id="pen-upgrade-1" onclick="penUpgrade1()">Buy Pen Upgrade</button>
-                    <button>Buy Printer Upgrade</button>
-                    <button id="pen-upgrade-2" onclick="penUpgrade2()">Buy Pen 2 Upgrade</button>
-                    <button>Buy Printer 2 Upgrade</button>
+                    <button class="not_bought" id="pen-upgrade-1" onclick="penUpgrade1()">Buy Pen Upgrade</button>
+                    <button class="not_bought">Buy Printer Upgrade</button>
+                    <button class="not_bought" id="pen-upgrade-2" onclick="penUpgrade2()">Buy Pen 2 Upgrade</button>
+                    <button class="not_bought">Buy Printer 2 Upgrade</button>
                 </div>
 
                 <div class="shop-assists">
                     <p>Assists</p>
-                    <button>Pen</button>
-                    <button>Print and Press</button>
-                    <button>Printer</button>
-                    <button>Money Tree</button>
-                    <button>Farm</button>
+                    <button class="not_bought" id="pen-assist" onclick="buyAssist('pen')">Pen ($10)</button>
+                    <button class="not_bought" id="print-assist" onclick="buyAssist('printAndPress')">Print and Press ($50)</button>
+                    <button class="not_bought" id="printer-assist" onclick="buyAssist('printer')">Printer ($200)</button>
+                    <button class="not_bought" id="tree-assist" onclick="buyAssist('moneyTree')">Money Tree ($1000)</button>
+                    <button class="not_bought" id="farm-assist" onclick="buyAssist('farm')">Farm ($5000)</button>
                 </div>
             </div>
 
