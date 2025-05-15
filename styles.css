@@ -85,7 +85,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 100%;
     border-radius: 10px;
     margin: 10px;
 }
@@ -130,7 +130,7 @@ nav a:hover {
     background: url('minidollar.png') no-repeat center center;
     background-size: contain;
     animation: fall 3s linear infinite;
-    pointer-events: none;
+    pointer-events: none;;
 }
 
 #button-clicker:active {

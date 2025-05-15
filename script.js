@@ -1,5 +1,6 @@
 let money_click_value = 1.0;
 let assist_rate = 0;
+let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 assist_started = false;
 
 let assists = {
@@ -70,7 +71,7 @@ function addAssist() {
             money_total = parseFloat(document.getElementById("money-total").textContent);
             money_total += assist_rate;
             updateMoneyTotal(money_total);
-        }, 1000); // Increment every second
+        }, 1000); 
 }
 
 function createFallingDollar() {
@@ -79,7 +80,7 @@ function createFallingDollar() {
     dollar.classList.add('falling-dollar');
 
     // Randomize the starting position
-    dollar.style.left = Math.random() * (moneyClicker.offsetWidth) + 'px';
+    dollar.style.left = Math.floor(Math.random() * (vw * (2/3) - 100) - (vw * (1/3) + 100)) + 'px';
     dollar.style.top = '0px';
 
     // Append the dollar to the money-clicker section
@@ -87,5 +88,5 @@ function createFallingDollar() {
 
     setTimeout(() => {
         dollar.remove();
-    }, 2500);
+    }, 2500); // Wait for 2.5 seconds before removing the dollar
 }
