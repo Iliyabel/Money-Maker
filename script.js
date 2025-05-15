@@ -166,6 +166,9 @@ function addAssist() {
             money_total = parseFloat(document.getElementById("money-total").textContent);
             money_total += assist_rate;
             updateMoneyTotal(money_total);
+
+            // Update the dollars per second display
+            document.getElementById("assist-total").textContent = assist_rate.toFixed(1);
         }, 1000); 
 }
 
