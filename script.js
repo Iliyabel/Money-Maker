@@ -16,6 +16,8 @@ function moneyMint() {
     let count = parseFloat(document.getElementById("money-total").textContent);
     count = count + money_click_value;
     document.getElementById("money-total").textContent = count;
+
+    createFallingDollar();
 }
 
 function penUpgrade1() {
@@ -69,4 +71,21 @@ function addAssist() {
             money_total += assist_rate;
             updateMoneyTotal(money_total);
         }, 1000); // Increment every second
+}
+
+function createFallingDollar() {
+    const moneyClicker = document.querySelector('.money-clicker');
+    const dollar = document.createElement('div');
+    dollar.classList.add('falling-dollar');
+
+    // Randomize the starting position
+    dollar.style.left = Math.random() * (moneyClicker.offsetWidth) + 'px';
+    dollar.style.top = '0px';
+
+    // Append the dollar to the money-clicker section
+    moneyClicker.appendChild(dollar);
+
+    setTimeout(() => {
+        dollar.remove();
+    }, 2500);
 }
