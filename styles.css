@@ -43,7 +43,8 @@ header h1 {
 .container {
     display: flex;
     flex-direction: horizontal;
-    height: 85vh;
+    height: 92.3vh;
+    border-bottom: #333 solid 4px;
 }
 
 .money-clicker {
@@ -52,9 +53,10 @@ header h1 {
     justify-content: center;
     align-items: center;
     width: 60%;
-    background-color: aquamarine;
     position: relative;
     overflow: hidden; 
+    background-image: url('background.png');
+    background-position: center center;
 }
 
 .money-clicker div {
@@ -67,15 +69,23 @@ header h1 {
 
 .money-clicker-header {
     background-color: #f0f0f0;
-    color: #333;
+    color: #f0f0f0;
     flex-direction: column;
     background: rgba(0,0,0,0.4);
     font-size: 28px;
     margin-bottom: 40px;
+    filter: drop-shadow(3px 3px 1px #111);
+    z-index: 100;
 }
 
 .money-clicker-header p{
     margin-bottom: 0;
+    margin-top: 0;
+}
+
+div .dps-counter {
+    font-size: .7em;
+    margin-top: 0;
 }
 
 #button-clicker {
@@ -84,6 +94,8 @@ header h1 {
     width: 262px;
     height: 235px;
     filter: drop-shadow(5px 5px 5px #111);
+    z-index: 100;
+    margin-top: 100px;
 }
 
 #button-clicker:hover {
