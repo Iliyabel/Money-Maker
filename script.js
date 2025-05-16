@@ -5,29 +5,33 @@ assist_started = false;
 
 let upgrades = {
     upgrade1: { 
-        price: 10, effect: () => { money_click_value = 2.0; }, 
+        price: 20, effect: () => { money_click_value = 2.0; }, 
         active: false, 
         id: "upgrade1", 
         label: "Double Decker Printer", 
-        tooltip: "Upgrade to a Double Decker Printer to double your earnings. Cost: $10" },
+        tooltip: "Double decker printer to double the money from a click. [Cost: $20]",
+        requiredAssist: ""},
     upgrade2: { 
         price: 50, effect: () => { assist_rate += 1.0; }, 
         active: false, 
         id: "upgrade2", 
         label: "Colored Ink", 
-        tooltip: "Colored Ink: Generates $1 per second. Cost: $50" },
+        tooltip: "Colored Ink -- fools more people. The 'Old Photocopier' generates twice as much per second. Requires 'Old Photocopier' to be bought. [Cost: $50]",
+        requiredAssist: "assist2"},
     upgrade3: { 
-        price: 10, effect: () => { money_click_value = 4.0; }, 
+        price: 100, effect: () => { money_click_value = 4.0; }, 
         active: false, 
         id: "upgrade3", 
         label: "Quad Decker Printer", 
-        tooltip: "Upgrade to a Quad Decker Printer to quadruple your earnings. Cost: $10" },
+        tooltip: "When the Double decker printer isn't enough, Quad Decker Printer doubles the money from a click once more. [Cost: $100]",
+        requiredAssist: ""},
     upgrade4: { 
-        price: 200, effect: () => { assist_rate += 5.0; }, 
+        price: 400, effect: () => { assist_rate += 5.0; }, 
         active: false, 
         id: "upgrade4", 
         label: "Full Light Spectrum Colored Ink", 
-        tooltip: "Full Light Spectrum Colored Ink: Generates $5 per second. Cost: $200" },
+        tooltip: "Full Light Spectrum Colored Ink -- why limit yourself?? The 'Laser Copier' generates twice as much per second. Requires 'Laser Copier' to be bought. [Cost: $400]",
+        requiredAssist: "assist3"}
 };
 
 let assists = {
@@ -40,12 +44,12 @@ let assists = {
         tooltip: "Auto Printer: Generates $0.1 per second. Cost: $10"
     },
     assist2: {
-        price: 50,
+        price: 100,
         rate: 1,
         active: false,
         id: "assist2",
-        label: "Old Photocopier ($50)",
-        tooltip: "Old Photocopier: Generates $1 per second. Cost: $50"
+        label: "Old Photocopier ($100)",
+        tooltip: "Old Photocopier: The guy you bought it from found it in the trash. Generates $1 per second. Cost: $100"
     },
     assist3: {
         price: 200,
@@ -61,7 +65,7 @@ let assists = {
         active: false,
         id: "assist4",
         label: "Money Plants ($1000)",
-        tooltip: "Money Plants: Generates $20 per second. Cost: $1000"
+        tooltip: "Money Plants: wasn't sure what else to add. Generates $20 per second. Cost: $1000"
     },
     assist5: {
         price: 5000,
@@ -69,7 +73,7 @@ let assists = {
         active: false,
         id: "assist5",
         label: "Money Trees ($5000)",
-        tooltip: "Money Trees: Generates $100 per second. Cost: $5000"
+        tooltip: "Money Trees ain't just the perfect place for shade. Generates $100 per second. Cost: $5000"
     }
 };
 
@@ -101,32 +105,17 @@ function moneyMint() {
     createFallingDollar();
 }
 
-function double_printer_upgrade() {
-    let count = parseFloat(document.getElementById("money-total").textContent);
-    if (count >= 10 && !document.getElementById("double-decker-printer-upgrade").classList.contains("bought")) {
-        count = count - 10;
-        document.getElementById("money-total").textContent = count;
-        document.getElementById("double-decker-printer-upgrade").classList.remove("not_bought");
-        document.getElementById("double-decker-printer-upgrade").classList.add("bought");
-        money_click_value = 2.0;
-    }
-}
-
-function quad_printer_upgrade() {
-    let count = parseFloat(document.getElementById("money-total").textContent);
-    if (count >= 10 && !document.getElementById("quad-decker-printer-upgrade").classList.contains("bought")) {
-        count = count - 10;
-        document.getElementById("money-total").textContent = count;
-        document.getElementById("quad-decker-printer-upgrade").classList.remove("not_bought");
-        document.getElementById("quad-decker-printer-upgrade").classList.add("bought");
-        money_click_value = 4.0;
-    }
-}
-
 function buyUpgrade(upgradeId) {
     const upgrade = upgrades[upgradeId];
     let money_total = parseFloat(document.getElementById("money-total").textContent);
     if (money_total >= upgrade.price && !upgrade.active) {
+
+        // Check if the required assist is active
+        if (upgrade.requiredAssist && !assists[upgrade.requiredAssist].active) {
+            alert(`You need to buy the ${assists[upgrade.requiredAssist].label} first!`);
+            return;
+        }
+        
         money_total -= upgrade.price;
         upgrade.active = true;
         updateMoneyTotal(money_total);
