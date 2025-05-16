@@ -132,7 +132,8 @@ div .dps-counter {
     display: flex;
     flex-direction: column;
     background-color: lightblue;
-    border-left: #333 solid 4px;
+    border-left: #333 solid 41px;
+    border-image: url(border.png) 41;
     padding: 20px;
     width: 40%;
 }
