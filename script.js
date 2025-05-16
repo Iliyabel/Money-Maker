@@ -99,8 +99,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     loadGame();
+
+    // Intro popup logic
+    if (!localStorage.getItem("moneyPrinterIntroSeen")) {
+        document.getElementById("intro-popup-overlay").style.display = "flex";
+        document.body.style.overflow = "hidden";
+    } else {
+        document.getElementById("intro-popup-overlay").style.display = "none";
+        document.body.style.overflow = "";
+    }
+
+    document.getElementById("intro-popup-btn").onclick = function() {
+        document.getElementById("intro-popup-overlay").style.display = "none";
+        document.body.style.overflow = "";
+        localStorage.setItem("moneyPrinterIntroSeen", "yes");
+    };
 });
 
+// Function to handle the money click event
 function moneyMint() {
     let count = parseFloat(document.getElementById("money-total").textContent);
     count = count + money_click_value;
@@ -109,6 +125,8 @@ function moneyMint() {
     createFallingDollar();
 }
 
+// Function to buy an upgrade. Won't work if the upgrade is already active or if you don't have enough money.
+// Also checks if the required assist is active before allowing the purchase.
 function buyUpgrade(upgradeId) {
     const upgrade = upgrades[upgradeId];
     let money_total = parseFloat(document.getElementById("money-total").textContent);
@@ -132,6 +150,7 @@ function buyUpgrade(upgradeId) {
     }
 }
 
+// Function to buy an assist. Won't work if the assist is already active or if you don't have enough money.
 function buyAssist(assistId) {
     const assist = assists[assistId];
     let money_total = parseFloat(document.getElementById("money-total").textContent);
@@ -152,10 +171,12 @@ function buyAssist(assistId) {
     }
 }
 
+// Function to update the money total display
 function updateMoneyTotal(money_total) {
     document.getElementById("money-total").textContent = money_total.toFixed(1);
 }
 
+// Function to add the assist rate to the total money every second
 function addAssist() {
     setInterval(() => {
             money_total = parseFloat(document.getElementById("money-total").textContent);
@@ -167,6 +188,7 @@ function addAssist() {
         }, 1000); 
 }
 
+// Function to create a falling dollar animation
 function createFallingDollar() {
     const moneyClicker = document.querySelector('.money-clicker');
     const dollar = document.createElement('div');
@@ -184,6 +206,7 @@ function createFallingDollar() {
     }, 2500); // Wait for 2.5 seconds before removing the dollar
 }
 
+// Function to save the game state
 function saveGame() {
     const saveData = {
         money: parseFloat(document.getElementById("money-total").textContent),
@@ -193,6 +216,7 @@ function saveGame() {
     localStorage.setItem("moneyPrinterSave", JSON.stringify(saveData));
 }
 
+// Function to load the game state
 function loadGame() {
     const saveData = JSON.parse(localStorage.getItem("moneyPrinterSave"));
     if (!saveData) return;
