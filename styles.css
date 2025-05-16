@@ -74,12 +74,10 @@ header h1 {
 }
 
 .money-clicker-header {
-    background-color: #f0f0f0;
     color: #f0f0f0;
     flex-direction: column;
     background: rgba(0,0,0,0.4);
     font-size: 28px;
-    margin-bottom: 40px;
     filter: drop-shadow(3px 3px 1px #111);
     z-index: 100;
 }
@@ -171,13 +169,14 @@ button[data-tooltip]::after {
     color: #fff;
     padding: 20px 10px;
     border-radius: 5px;
+    border-color: black;
     font-size: 12px;
-    white-space: nowrap;
     word-break: break-word;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease-in-out;
-    z-index: 10;
+    z-index: 110;
+    width: 300px;
 }
 
 button[data-tooltip]:hover::after {
