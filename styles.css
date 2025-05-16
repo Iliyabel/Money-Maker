@@ -138,7 +138,7 @@ div .dps-counter {
     border-image: url(resources/border2.png) 41;
     border-right: #333 solid 41px;
     width: 40%;
-    background-color: #5c3334;
+    background: url(resources/shopbackground.png);
     color: var(--text-color);
 }
 
