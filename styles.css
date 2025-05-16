@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'dayfont';
-    src: url('DAYPBL__.ttf');
+    src: url('resources/DAYPBL__.ttf');
 }
 
 body {
@@ -59,9 +59,9 @@ header h1 {
     width: 60%;
     position: relative;
     overflow: hidden; 
-    background-image: url('background.png');
+    background-image: url('resources/background.png');
     background-position: center center;
-    border-image: url(border1.png) 41;
+    border-image: url(resources/border1.png) 41;
     border-right: #333 solid 41px;
 }
 
@@ -94,7 +94,7 @@ div .dps-counter {
 
 #button-clicker {
     border: none;
-    background: url(printer.png);
+    background: url(resources/printer.png);
     width: 262px;
     height: 235px;
     filter: drop-shadow(5px 5px 5px #111);
@@ -121,7 +121,7 @@ div .dps-counter {
     position: absolute;
     width: 100px;
     height: 40px;
-    background: url('miniDollar.png') no-repeat center center;
+    background: url('resources/miniDollar.png') no-repeat center center;
     background-size: contain;
     animation: fall 3s linear infinite;
     pointer-events: none;;
@@ -135,7 +135,7 @@ div .dps-counter {
 .shop {
     display: flex;
     flex-direction: column;
-    border-image: url(border2.png) 41;
+    border-image: url(resources/border2.png) 41;
     border-right: #333 solid 41px;
     width: 40%;
     background-color: #5c3334;
@@ -189,7 +189,7 @@ button[data-tooltip]:hover::after {
 }
 
 .shop p {
-    background-image: url(borderHorizontal.png);
+    background-image: url(resources/borderHorizontal.png);
     background-size: 110% 100%;
     padding: 10px;
 }
