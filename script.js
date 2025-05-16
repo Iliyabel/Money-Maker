@@ -77,6 +77,8 @@ let assists = {
     }
 };
 
+window.addEventListener("beforeunload", saveGame);
+
 document.addEventListener("DOMContentLoaded", () => {
     // Load upgrades buttons
     Object.values(upgrades).forEach(upg => {
@@ -95,6 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.setAttribute("data-tooltip", ast.tooltip);
         }
     });
+
+    loadGame();
 });
 
 function moneyMint() {
@@ -115,7 +119,7 @@ function buyUpgrade(upgradeId) {
             alert(`You need to buy the ${assists[upgrade.requiredAssist].label} first!`);
             return;
         }
-        
+
         money_total -= upgrade.price;
         upgrade.active = true;
         updateMoneyTotal(money_total);
@@ -124,6 +128,7 @@ function buyUpgrade(upgradeId) {
         document.getElementById(upgrade.id).classList.add("bought");
 
         upgrade.effect();
+        saveGame();
     }
 }
 
@@ -138,6 +143,7 @@ function buyAssist(assistId) {
         assist_rate += assist.rate;
         document.getElementById(assist.id).classList.remove("not_bought");
         document.getElementById(assist.id).classList.add("bought");
+        saveGame();
     }
 
     if (assist_started === false) {
@@ -176,4 +182,64 @@ function createFallingDollar() {
     setTimeout(() => {
         dollar.remove();
     }, 2500); // Wait for 2.5 seconds before removing the dollar
+}
+
+function saveGame() {
+    const saveData = {
+        money: parseFloat(document.getElementById("money-total").textContent),
+        upgrades: Object.fromEntries(Object.entries(upgrades).map(([k, v]) => [k, v.active])),
+        assists: Object.fromEntries(Object.entries(assists).map(([k, v]) => [k, v.active])),
+    };
+    localStorage.setItem("moneyPrinterSave", JSON.stringify(saveData));
+}
+
+function loadGame() {
+    const saveData = JSON.parse(localStorage.getItem("moneyPrinterSave"));
+    if (!saveData) return;
+
+    // Restore money
+    updateMoneyTotal(saveData.money);
+
+    // Restore upgrades
+    Object.entries(saveData.upgrades).forEach(([k, active]) => {
+        if (upgrades[k]) {
+            upgrades[k].active = active;
+            const btn = document.getElementById(upgrades[k].id);
+            if (active && btn) {
+                btn.classList.remove("not_bought");
+                btn.classList.add("bought");
+                upgrades[k].effect();
+            }
+        }
+    });
+
+    // Restore assists and recalculate assist_rate
+    assist_rate = 0;
+    Object.entries(saveData.assists).forEach(([k, active]) => {
+        if (assists[k]) {
+            assists[k].active = active;
+            const btn = document.getElementById(assists[k].id);
+            if (active && btn) {
+                btn.classList.remove("not_bought");
+                btn.classList.add("bought");
+                assist_rate += assists[k].rate;
+            }
+        }
+    });
+
+    // Re-apply upgrade effects
+    Object.entries(saveData.upgrades).forEach(([k, active]) => {
+        if (upgrades[k] && active) {
+            upgrades[k].effect();
+        }
+    });
+
+    // Update dollars per second display
+    document.getElementById("assist-total").textContent = assist_rate.toFixed(1);
+
+    // If any assist is active, start the interval
+    if (assist_rate > 0) {
+        assist_started = true;
+        addAssist();
+    }
 }
