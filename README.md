@@ -43,6 +43,8 @@
 - **Purchase upgrades** to boost your earnings per click or increase your automation rate.
 - **Progress is saved automatically** in your browser. You can close and reopen the page and your money, upgrades, and assists will be restored.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## ✨ Features
 
 - **Intro Popup:** The first time you load the game, you'll see an introduction screen. It will not appear again after you click "Got it!".
@@ -51,6 +53,8 @@
 - **Dollars Per Second:** The current automation rate is always displayed and updates live.
 - **Responsive UI:** Works in modern browsers and on GitHub Pages.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 🛣️ Future Plans
 
 - Restart game button.
@@ -58,6 +62,8 @@
 - Allow multiple assists of the same type.
 - Add more upgrades and assits.
 - Add shine around printer.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📌 Getting Started
 
@@ -71,10 +77,14 @@
 
 - [Play Money Printer on GitHub Pages](https://iliyabel.github.io/Money-Printer/)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 🛠️ Assets
 
 - All images and fonts are in the `resources/` folder.
 - Make sure file names and paths are **case-sensitive** if you deploy to GitHub Pages.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 👥 Credits
 
@@ -84,3 +94,5 @@
 ---
 
 Enjoy printing money!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
