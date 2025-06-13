@@ -32,14 +32,11 @@
 
 <img src="readmeAssets/demo1.png" alt="Demo of pressing the printer image." >
 <br />
-<br />
 
 - **Click the printer** to earn dollars.
 <br />
-<br />
 
 <img src="readmeAssets/demo2.png" alt="Demo of pressing the printer image." >
-<br />
 <br />
 
 - **Buy assists** to automate your income (dollars per second).
